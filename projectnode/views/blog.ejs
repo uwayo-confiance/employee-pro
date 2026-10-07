@@ -1,0 +1,36 @@
+<!-- blog.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Blog</h1>
+        
+      
+        <a href="/recent-posts" class="btn btn-info mb-4">View Recent Posts</a>
+
+        <div class="row">
+            <% posts.forEach(post => { %>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <% if (post.image) { %>
+                            <img src="<%= post.image %>" class="card-img-top" alt="<%= post.title %>">
+                        <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= post.title %></h5>
+                            <p class="card-text"><%= post.content.substring(0, 100) + '...' %></p>
+                            <a href="/post/<%= post.id %>" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
+
